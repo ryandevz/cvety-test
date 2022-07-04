@@ -24,7 +24,7 @@ Open next browser address: http://localhost:8080/
 #### Store form
 
 ```http
-  POST /api/form/store
+POST /api/form/store
 ```
 
 | Parameter | Type     | Description                       |
@@ -36,13 +36,13 @@ Open next browser address: http://localhost:8080/
 #### Get forms
 
 ```http
-  POST /api/form/get
+POST /api/form/get
 ```
 
 #### Get IP location
 
 ```http
-  GET /api/location
+GET /api/location
 ```
 
 ## Used Packages
