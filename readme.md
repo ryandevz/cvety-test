@@ -8,8 +8,8 @@
 ## Installation
 Install dependency packages
 ```bash
-cd cvety_test/source
-docker-compose run --rm composer update
+cd cvety-test/source
+docker-compose run --rm composer install
 ```
 
 Run enviroment in docker
@@ -19,12 +19,35 @@ docker-compose up -d --build
 ```
 Open next browser address: http://localhost:8080/
 
+## API Reference
+
+#### Store form
+
+```http
+  POST /api/form/store
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `email`   | `string` | **Required**.                     |
+| `phone`   | `string` | **Required**.                     |
+| `message` | `string` | **Required**.                     |
+
+#### Get forms
+
+```http
+  POST /api/form/get
+```
+
+#### Get IP location
+
+```http
+  GET /api/location
+```
+
 ## Used Packages
 ```bash
 composer require symfony/routing
-composer require symfony/validator
-composer require nette/database
-composer require doctrine/migrations
 composer require vlucas/phpdotenv
 ```
 

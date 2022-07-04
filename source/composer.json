@@ -7,6 +7,7 @@
     "require": {
         "symfony/routing": "^6.1",
         "symfony/http-foundation": "^6.1",
-        "vlucas/phpdotenv": "^5.4"
+        "vlucas/phpdotenv": "^5.4",
+        "guzzlehttp/guzzle": "^7.0"
     }
 }

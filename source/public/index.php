@@ -6,7 +6,8 @@ error_reporting(E_ALL);
 require_once '../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
-$dotenv->load();
+/* If works without docker */
+// $dotenv->load();
 
 require_once '../config/config.php';
 require_once '../routes/web.php';
