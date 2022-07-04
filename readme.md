@@ -1,6 +1,5 @@
 # Test - cvety.kz
 
-> English
 ## Requirements
 - `Docker` equal or higher version 19.03.12, build 48a66213fe
 - `Docker Compose` equal or higher version 1.26.2, build eefe0d31 
