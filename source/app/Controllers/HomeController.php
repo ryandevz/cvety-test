@@ -12,13 +12,14 @@ class HomeController
 	{
 		$form = new Form();
         $form->getForm();
-
-		$data = 'Test';
+        
         require_once APP_ROOT . '/views/index.php';
 	}
 
 	public function store(RouteCollection $routes) 
     {
+        header("Content-type: application/json");
+
         /* Validate */
         $data = array();
         if( isset($_POST['email']) ) {
@@ -39,9 +40,20 @@ class HomeController
             $data['message'] = "message required";
         }
 
-        $json = json_encode($data, JSON_PRETTY_PRINT);
+        if (isset($_POST['email'], $_POST['phone'], $_POST['message'])) {
+            $form = new Form();
+            $form->setForm($_POST['email'], $_POST['phone'], $_POST['message']);
 
-        header("Content-type: application/json");
+            if($form->status = 'inserted') {
+                $json = json_encode($form, JSON_PRETTY_PRINT);
+                echo $json;
+            } elseif ($form->status = 'error') {
+                $json = json_encode($form, JSON_PRETTY_PRINT);
+                echo $json;
+            }
+        }
+
+        $json = json_encode($data, JSON_PRETTY_PRINT);
         echo $json;
     }
 }

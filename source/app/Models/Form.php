@@ -1,17 +1,21 @@
 <?php 
 namespace App\Models;
+use Nette\Database\Connection;
 
 class Form
-{
-	protected $email;
-	protected $phone;
-	protected $message;
-	
+{	
     public function getForm()
 	{
-		$this->email = 'hello@world.com';
-		$this->phone = '+7 707 700 70 70';
-		$this->message = 'Hello World';
+		try {
+			$dsn = 'mysql:host=' . DB_HOST .';dbname=' . DB_DATABASE;
+			$database = new Connection($dsn, DB_USERNAME, DB_PASSWORD);
+	
+			$query = $database->fetchAll('SELECT * FROM form');
+
+			return $this->query = $query;
+		} catch (\Throwable $th) {
+			return $this->query = 'error';
+		}
 	}
 
 	public function getEmail()
@@ -31,8 +35,19 @@ class Form
 
 	public function setForm($email, $phone, $message)
 	{
-		$this->email = $email;
-        $this->phone = $phone;
-        $this->message = $message;
+		try {
+			$dsn = 'mysql:host=' . DB_HOST .';dbname=' . DB_DATABASE;
+			$database = new Connection($dsn, DB_USERNAME, DB_PASSWORD);
+	
+			$database->query('INSERT INTO form ?', [
+				'email' => $email,
+				'phone' => $phone,
+				'message' => $message,
+			]);
+
+			$this->status = 'inserted';
+		} catch (\Throwable $th) {
+			$this->status = 'error';
+		}
 	}
 }

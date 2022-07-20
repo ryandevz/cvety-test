@@ -32,10 +32,18 @@ POST /api/form/store
 | `phone`   | `string` | **Required**.                     |
 | `message` | `string` | **Required**.                     |
 
+Curl example
+```bash
+curl --location --request POST 'http://localhost:8080/api/form/store' \
+--form 'email="4@4.com"' \
+--form 'phone="77774444444"' \
+--form 'message="Message 4"'
+```
+
 #### Get forms
 
 ```http
-POST /api/form/get
+GET /
 ```
 
 #### Get IP location
@@ -48,6 +56,7 @@ GET /api/location
 ```bash
 composer require symfony/routing
 composer require vlucas/phpdotenv
+composer require nette/database
 ```
 
 ## Authors
