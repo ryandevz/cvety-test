@@ -18,6 +18,10 @@ docker-compose up -d --build
 ```
 Open next browser address: http://localhost:8080/
 
+Shutdown docker enviroment
+```bash
+docker-compose down
+```
 ## API Reference
 
 #### Store form
@@ -46,16 +50,33 @@ curl --location --request POST 'http://localhost:8080/api/form/store' \
 GET /
 ```
 
-#### Get IP location
+#### Get IP location by your ip
 
 ```http
-GET /api/location
+GET /api/mylocation
+```
+
+#### Get IP location by input
+
+```http
+GET /api/getlocation
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `ip`      | `string` | **Required**.                     |
+
+Curl example
+```bash
+curl --location --request POST 'http://localhost:8080/api/getlocation' \
+--form 'ip="8.8.8.8"'
 ```
 
 ## Used Packages
 ```bash
 composer require symfony/routing
 composer require vlucas/phpdotenv
+composer require guzzlehttp/guzzle
 composer require nette/database
 ```
 
